@@ -4,6 +4,8 @@ import android.app.ProgressDialog;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -52,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements CopyListener{
     }
 
 
-    //Cria o menu
+    // Cria o menu (três pontinhos)
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -80,6 +82,12 @@ public class MainActivity extends AppCompatActivity implements CopyListener{
             case R.id.creators:
                 Toast.makeText(MainActivity.this, "Created by Lucas Cerimeli and João Victor Alves", Toast.LENGTH_SHORT).show();
                 return true;
+
+            case R.id.github_repository:
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/LCerimeli/Quoter"));
+                startActivity(browserIntent);
+                return true;
+
 
             default:
                 return super.onOptionsItemSelected(item);
